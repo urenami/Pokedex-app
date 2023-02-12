@@ -21,14 +21,21 @@ function addListItem (pokemon) {
     let repository = document.querySelector(".pokemon-list");
     let listPokemon = document.createElement("li");
     let button = document.createElement("button");
+    /*created button for pokemon*/
     button.innerText = pokemon.name;
     button.classList.add("button-class");
-    //added event listener//
-    button.addEventListener("click", (Event) => showDetails(pokemon));
     listPokemon.appendChild(button);
     repository.appendChild(listPokemon);
+    /*added event listener*/
+    button.addEventListener("click", (Event) => showDetails(pokemon));
+    
   }
 
+  function showDetails (pokemon) {
+    console.log(pokemon);
+
+  }
+  
 return {
     add: add,
     getAll: getAll,
@@ -36,7 +43,7 @@ return {
 }
 })();
 
-/* replacing for loop with for each loop*/ 
+/* loop to create a button with each pokemon*/ 
 
 pokemonRepository.getAll().forEach(function(pokemon) {
 
