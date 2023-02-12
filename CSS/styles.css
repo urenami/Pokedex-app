@@ -3,8 +3,8 @@ body {
     -webkit-text-fill-color: yellow;
     text-align: center;
     /* sets the background color and font family*/
-    background-color: #0000ff;
-    font-family: fantasy;
+    background-color: #00008B;
+    font-family: arial,bold;
     /* Sets the font size to 16px */
     font-size: 20px;
     /* Sets the line-height to 1.6 */
@@ -20,3 +20,7 @@ header {
     /* Sets the header centered */
     text-align: center;
   }
+
+  .button-class {
+    background-color: black;
+}
