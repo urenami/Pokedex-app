@@ -1,52 +1,95 @@
-let pokemonRepository = (function() {
- 
-    let  pokemonList = [
-    { name: "charizard", height: 1.7, type: ["fire", "flying"] },
-    { name: "Blastoise", height: 1.6, type: "water" },
-    { name: "Venusaur", height: 2, type: ["grass", "poison"] },
-    { name: "Nidoqueen", height: 1.3, type: ["ground", "poison"] },
-    { name: "Nidoking", height: 1.4, type:["ground", "poison"] },
-    { name: "Blaziken", height: 1.9, type: ["fire", "fighting"] },
-];
+let pokemonRepository = (function () {
+    //empty array below so it can load from the api//
+    let  pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+   
+    function add(pokemon) {
+       if (
+           typeof pokemon === "object" &&
+           "name" in pokemon
+        ) {
+           pokemonList.push(pokemon);
+        } else {
+            console.log("pokemon is not correct");
+            
+          }
+        }
+        function getAll() {
+            return pokemonList;
+        }
+        
+        function addListItem(pokemon) {
+       let pokemonList = document.querySelector(".pokemon-list");
+       let listpokemon = document.createElement("li");
+       let button = document.createElement("button");
+       
+       //created button for pokemon//
+       button.innerText = pokemon.name;
+       button.classList.add("button-class");
+       listpokemon.appendChild(button);
+       pokemonList.appendChild(listpokemon);
+       button.addEventListener("click", function(event) {
+           showDetails(pokemon);
+       });
+    }
+   
+    //loads the list of pokemon from the api//
 
-function add(pokemon) {
-    pokemonList.push(pokemon);
-}
-
-function getAll() {
-    return pokemonList;
-}
-
-function addListItem (pokemon) {
-    let repository = document.querySelector(".pokemon-list");
-    let listPokemon = document.createElement("li");
-    let button = document.createElement("button");
-    /*created button for pokemon*/
-    button.innerText = pokemon.name;
-    button.classList.add("button-class");
-    listPokemon.appendChild(button);
-    repository.appendChild(listPokemon);
-    /*added event listener*/
-    button.addEventListener("click", (Event) => showDetails(pokemon));
-    
-  }
-
-  function showDetails (pokemon) {
-    console.log(pokemon);
-
-  }
-  
-return {
-    add: add,
-    getAll: getAll,
-    addListItem: addListItem
-}
+     function loadList() {
+       return fetch(apiUrl).then(function (response) {
+           return response.json();
+       }).then(function (json) {
+           json.results.forEach(function (item) {
+               let pokemon = {
+                name: item.name,
+                detailsUrl: item.url
+               };
+               add(pokemon);
+               console.log(pokemon);
+           });
+       }).catch(function (e) {
+           console.error(e);
+       })
+   }
+   
+   //loads the pokemon details
+   function loadDetails(item) {
+       let url = item.detailsUrl;
+       return fetch(url).then(function (response) {
+         return response.json();
+       }).then(function (details) {
+   
+           //added details to items//
+         item.imageUrl = details.sprites.front_default;
+         item.height = details.height;
+         item.types = details.types;
+       }).catch(function (e) {
+         console.error(e);
+       });
+     }
+   
+     function showDetails(item) {
+       pokemonRepository.loadDetails(item).then(function () {
+           console.log(item);
+         });
+       }
+     
+     return {
+       add: add,
+       getAll: getAll,
+       addListItem: addListItem,
+       loadList: loadList,
+       loadDetails: loadDetails,
+       showDetails: showDetails
+     };
 })();
-
-/* loop to create a button with each pokemon*/ 
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-
+   
+   //loop to create a button with each pokemon// 
+   
+pokemonRepository.loadList().then(function () {
+   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
-
-    })
+   
+  });
+});
+   
