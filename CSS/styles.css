@@ -23,4 +23,6 @@ header {
 
   .button-class {
     background-color: black;
+    padding: 4px 20px;
 }
+
