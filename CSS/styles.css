@@ -31,8 +31,10 @@ header {
 }
 
 #modal-container.is-visible {
+  color: black;
+  align-items: center;
+  justify-content: center;
   position: fixed;
-  padding: 20px;
   box-sizing: border-box;
   top: 0;
   left: 0;
@@ -55,18 +57,19 @@ header {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
-  background: #fff;
+  background: black;
   padding: 15px;
   width: 100%;
   max-width: 700px;
   text-align: left;
+  border-radius: 10px;
 }
 
 .modal-close {
+  
   float: right;
-  border: 0;
+  border: 10;
   background: none;
-  color: #777;
   text-decoration: underline;
 }
 
