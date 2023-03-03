@@ -84,7 +84,7 @@ function loadDetails(item) {
    sprite.src = item.imageUrl;
 
    let closeButtonElement = document.createElement('button');
-   closeButtonElement.innerText = 'X';
+   closeButtonElement.innerText = 'x'; 
    closeButtonElement.addEventListener('click', hideModal)
 
    let titleElement = document.createElement ('h1');
