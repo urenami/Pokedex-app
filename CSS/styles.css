@@ -1,82 +1,187 @@
 body {
-    /* sets the the text color and align body text*/
-    -webkit-text-fill-color: yellow;
-    text-align: center;
-    /* sets the background color and font family*/
-    background-color: #00008B;
-    font-family: arial,bold;
-    /* Sets the font size to 16px */
-    font-size: 20px;
-    /* Sets the line-height to 1.6 */
-    line-height: 2.6;
-    
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: "Ubuntu", sans-serif;
+  margin: 50px;
+  margin-top: 70px;
 }
 
-header {
-    /* Sets the font size */
-    font-size: larger;
-    margin-left: auto;
-    margin-right: auto;
-    /* Sets the header centered */
-    text-align: center;
-  }
-
-  .button-class {
-    background-color: black;
-    padding: 4px 20px;
-}
-
-#modal-container {
-  display: none;
-}
-
-#modal-container.is-visible {
-  color: black;
+.pokemonList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  max-width: 1600px;
+}
 
-  /* to show it above other content */
-  z-index: 999; 
-
-  /* to allow scrolling if the screen is not high enough*/
-  overflow: auto; 
-
-  /* this is used to center the modal */
-  display: grid;
+main {
+  margin-top: 60px;
+  margin: 20px;
+  line-height: 1.5;
+  font-size: 1rem;
   text-align: center;
+  flex: 1;
 }
 
-.modal {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: black;
-  padding: 15px;
+.pokemon-button,
+.btn {
+  text-transform: capitalize;
+  position: relative;
   width: 100%;
-  max-width: 700px;
-  text-align: left;
-  border-radius: 10px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid black;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 4px 4px black;
+  cursor: pointer;
+  background-color: black;
+  border-radius: 0%;
 }
 
-.modal-close {
-  
-  float: right;
-  border: 10;
-  background: none;
-  text-decoration: underline;
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary {
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
 }
 
-.modal h1 {
-  margin-top: 0;
+.pokemon-button:hover {
+  box-shadow: 1px 1px black;
 }
 
-.modal p {
-  margin-bottom: 0;
+.btn-primary:hover {
+  box-shadow: 1px 1px black;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: 4px 4px black;
+  border: 1px solid black;
+}
+
+.form-control:focus {
+  outline: none !important;
+  box-shadow: 1px 1px black;
+  border: 1px solid black;
+}
+
+.btn-secondary {
+  width: auto;
+  margin: 0;
+  padding: 3px;
+  border: 1px solid black;
+  font-size: 12px;
+  font-weight: 300;
+  box-shadow: 4px 4px black;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.btn-secondary:hover {
+  box-shadow: 1px 1px black;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+.modal-title {
+  text-transform: capitalize;
+  justify-content: center;
+}
+
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  -moz-column-count: 4;
+  -moz-column-gap: 5px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 5px;
+  column-count: 4;
+  column-gap: 5px;
+  border-top: 0 4;
+}
+
+.list-group-item {
+  border: 0 none;
+}
+
+nav {
+  font-size: xx-large;
+  font-weight: bold;
+  background-color: #00008b;
+  color: white;
+  border-bottom: 4px solid black;
+  border-top: none;
+}
+
+.modal-header {
+  border-color: black;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  ul {
+    margin: 0;
+    padding: 0;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+
+  .pokemon-button,
+  .btn {
+    font-size: x-small;
+  }
+
+  main {
+    margin-top: 60px;
+  }
+
+  .btn-secondary {
+    width: 50px;
+    margin-left: 20px;
+    margin-right: auto;
+  }
+}
+
+.form-control {
+  width: 260px !important;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid black;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 4px 4px black;
+  cursor: auto;
+  background-color: white;
+  color: black;
+  border-radius: 0%;
+}
+
+.navbar-brand {
+  font-size: 50px;
+  -webkit-text-stroke: 1px white;
+  filter: drop-shadow(2px 2px black);
+  line-height: 1;
 }
