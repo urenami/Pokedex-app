@@ -1,7 +1,33 @@
-Pokedex application project
+# Pokedex
 
-This is a Pokedex app which displays 200 pokemon with details about the pokemon. Data is from a an external api (https://pokeapi.co/).
+## Description
 
-html, javascript,css, jquery, and bootstrap was used for this applicaiton.
+Pokedex is a simple web application built as a learning project to practice JavaScript programming. It showcases basic JavaScript functionalities and concepts.
 
-The pokedex was developed to learn javascript for the web development course on CareerFoundry.
+## Features
+
+- Display a greeting message
+- Perform basic arithmetic operations
+- Manipulate strings
+- Handle user input
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+
+## Installation
+
+1. Clone the repository.
+2. Open the `index.html` file in a web browser to access the app.
+
+## Usage
+
+1. Enter your name in the input field.
+2. Click the "Greet" button to display a personalized greeting message.
+3. Use the available buttons to perform basic arithmetic operations.
+4. Explore the app to learn and experiment with JavaScript functionalities.
+
+## Link to hosted project
+https://urenami.github.io/simple-js-app/
